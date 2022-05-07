@@ -3,9 +3,9 @@ import React, { useState, useEffect, createContext } from 'react';
 // API
 import { getProducts } from '../services/api';
 
-const ProductsContext = createContext();
+export const ProductsContext = createContext();
 
-const ProductContextProvider = (props) => {
+const ProductContextProvider = ({children}) => {
 
     const [products, setProducts] = useState([]);
 
@@ -14,12 +14,13 @@ const ProductContextProvider = (props) => {
             setProducts(await getProducts());
         }
 
+        fetchAPI();
     }, [])
 
 
     return (
         <ProductsContext.Provider value={products}>
-            {props.children}
+            {children}
         </ProductsContext.Provider>
     );
 };
