@@ -13,6 +13,7 @@ const sumItems = items => {
     return {itemsCounter, total}
 }
 
+
 const cartReducer = (state, action) => {
     console.log(state);
     switch(action.type) {
